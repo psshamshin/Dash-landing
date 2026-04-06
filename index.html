@@ -465,6 +465,80 @@
       flex-shrink: 0;
     }
 
+    /* ── COMPARISON TABLE ── */
+    .compare-wrap {
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+    .compare-table thead tr {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table th {
+      padding: 16px 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .compare-table th:first-child { text-align: left; color: var(--text-dim); }
+    .compare-table th.col-dash { color: var(--accent); }
+
+    .compare-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody tr:hover { background: var(--surface-2); }
+
+    .compare-table td {
+      padding: 15px 24px;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+    .compare-table td:first-child {
+      text-align: left;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .compare-table td.col-dash {
+      background: rgba(249,115,22,0.05);
+      border-left: 1px solid rgba(249,115,22,0.15);
+      border-right: 1px solid rgba(249,115,22,0.15);
+    }
+    .compare-table thead th.col-dash {
+      background: rgba(249,115,22,0.08);
+      border-left: 1px solid rgba(249,115,22,0.2);
+      border-right: 1px solid rgba(249,115,22,0.2);
+    }
+    .compare-table td.check { font-size: 1.1rem; }
+    .compare-table td.cross { font-size: 1.1rem; opacity: 0.35; }
+
+    .dash-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
     /* ── SOCIAL PROOF ── */
     .social-proof {
       background: var(--surface);
@@ -968,6 +1042,73 @@
           </ul>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section>
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-tag">Why Dash</div>
+        <h2>How we compare</h2>
+        <p class="section-sub">Dash combines the best of both worlds — the safety of apps with the flexibility of direct deals.</p>
+      </div>
+      <div class="compare-wrap fade-up">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Other P2P Apps</th>
+              <th>Facebook Groups</th>
+              <th class="col-dash">Dash <span class="dash-badge">us</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Easy booking</td>
+              <td class="check">✅</td>
+              <td class="cross">❌</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Trust &amp; verification</td>
+              <td class="check">✅</td>
+              <td class="cross">❌</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Flexible negotiation</td>
+              <td class="cross">❌</td>
+              <td class="check">✅</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Variety of cars</td>
+              <td class="cross">❌</td>
+              <td class="check">✅</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Secure payments</td>
+              <td class="check">✅</td>
+              <td class="cross">❌</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Direct communication</td>
+              <td class="cross">❌</td>
+              <td class="check">✅</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+            <tr>
+              <td>Large user base</td>
+              <td class="cross">❌</td>
+              <td class="check">✅</td>
+              <td class="col-dash check">✅</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
