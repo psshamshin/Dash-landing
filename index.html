@@ -799,6 +799,35 @@
       .audience-card { padding: 28px 24px; }
       section { padding: 72px 20px; }
     }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px;
+    }
+    .lang-btn {
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .lang-btn:not(.active):hover { color: var(--text); }
   </style>
 </head>
 <body>
@@ -806,8 +835,14 @@
   <!-- NAV -->
   <nav>
     <div class="logo">Dash<span>.</span></div>
-    <div class="nav-badge">Coming to Thailand</div>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <div class="nav-badge" data-i18n="nav_badge">Coming to Thailand</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="th">TH</button>
+      </div>
+      <a href="#waitlist" class="nav-cta" data-i18n="nav_cta">Join Waitlist</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -817,45 +852,45 @@
 
     <div class="hero-tag">
       <span class="dot"></span>
-      Launching in Thailand — Be first to know
+      <span data-i18n="hero_tag">Launching in Thailand — Be first to know</span>
     </div>
 
-    <h1>
+    <h1 data-i18n="hero_h1">
       Car sharing that<br/>
       works for <span class="highlight">everyone</span>
     </h1>
 
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="hero_sub">
       Dash is a peer-to-peer car rental platform where owners and renters
       connect directly, negotiate their price, and transact safely — all in one place.
     </p>
 
     <form class="email-form" id="hero-form">
-      <input type="email" placeholder="Enter your email address" required autocomplete="email" />
-      <button type="submit" class="btn-primary">Get Early Access</button>
+      <input type="email" data-i18n-placeholder="hero_placeholder" placeholder="Enter your email address" required autocomplete="email" />
+      <button type="submit" class="btn-primary" data-i18n="hero_cta">Get Early Access</button>
     </form>
     <div class="success-msg" id="hero-success">
       <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      You're on the list! We'll be in touch soon.
+      <span data-i18n="hero_success">You're on the list! We'll be in touch soon.</span>
     </div>
-    <p class="form-note" id="hero-note">No spam. Unsubscribe anytime.</p>
+    <p class="form-note" id="hero-note" data-i18n="hero_note">No spam. Unsubscribe anytime.</p>
 
     <div class="stats fade-up">
       <div class="stat">
         <div class="stat-num"><span>C2C</span></div>
-        <div class="stat-label">Peer-to-Peer</div>
+        <div class="stat-label" data-i18n="stat1">Peer-to-Peer</div>
       </div>
       <div class="stat">
         <div class="stat-num">100<span>%</span></div>
-        <div class="stat-label">Verified Users</div>
+        <div class="stat-label" data-i18n="stat2">Verified Users</div>
       </div>
       <div class="stat">
-        <div class="stat-num"><span>₿</span> You</div>
-        <div class="stat-label">Set the Price</div>
+        <div class="stat-num"><span>฿</span> You</div>
+        <div class="stat-label" data-i18n="stat3">Set the Price</div>
       </div>
       <div class="stat">
         <div class="stat-num">🇹🇭</div>
-        <div class="stat-label">Thailand First</div>
+        <div class="stat-label" data-i18n="stat4">Thailand First</div>
       </div>
     </div>
   </section>
@@ -864,12 +899,12 @@
   <section class="how">
     <div class="container">
       <div class="fade-up">
-        <div class="section-tag">How it works</div>
-        <h2>Simple. Direct. Transparent.</h2>
-        <p class="section-sub">From listing to driving — the whole experience lives on Dash. No middlemen, no hidden fees.</p>
+        <div class="section-tag" data-i18n="how_tag">How it works</div>
+        <h2 data-i18n="how_h2">Simple. Direct. Transparent.</h2>
+        <p class="section-sub" data-i18n="how_sub">From listing to driving — the whole experience lives on Dash. No middlemen, no hidden fees.</p>
         <div class="how-tabs">
-          <button class="how-tab active" data-tab="renter">🚙 I want to rent</button>
-          <button class="how-tab" data-tab="owner">🔑 I own a car</button>
+          <button class="how-tab active" data-tab="renter" data-i18n="how_tab_renter">🚙 I want to rent</button>
+          <button class="how-tab" data-tab="owner" data-i18n="how_tab_owner">🔑 I own a car</button>
         </div>
       </div>
 
@@ -877,28 +912,28 @@
       <div class="how-flow active fade-up" id="flow-renter">
         <div class="flow-grid">
           <div class="step">
-            <div class="step-num">Step 01</div>
+            <div class="step-num" data-i18n="step">Step 01</div>
             <span class="step-icon">🔍</span>
-            <h3>Browse cars near you</h3>
-            <p>Search by location, dates, and car type. See real photos and owner ratings before you decide.</p>
+            <h3 data-i18n="r_s1_h">Browse cars near you</h3>
+            <p data-i18n="r_s1_p">Search by location, dates, and car type. See real photos and owner ratings before you decide.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 02</div>
+            <div class="step-num" data-i18n="step2">Step 02</div>
             <span class="step-icon">💬</span>
-            <h3>Choose or negotiate price <span class="optional-tag">Optional</span></h3>
-            <p>Book at the listed price — or message the owner and make an offer. It's flexible, like it should be.</p>
+            <h3 data-i18n="r_s2_h">Choose or negotiate price <span class="optional-tag" data-i18n="optional">Optional</span></h3>
+            <p data-i18n="r_s2_p">Book at the listed price — or message the owner and make an offer. It's flexible, like it should be.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 03</div>
+            <div class="step-num" data-i18n="step3">Step 03</div>
             <span class="step-icon">🔒</span>
-            <h3>Pay securely</h3>
-            <p>No direct transfers to strangers. Pay through Dash — your money is protected until the trip starts.</p>
+            <h3 data-i18n="r_s3_h">Pay securely</h3>
+            <p data-i18n="r_s3_p">No direct transfers to strangers. Pay through Dash — your money is protected until the trip starts.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 04</div>
+            <div class="step-num" data-i18n="step4">Step 04</div>
             <span class="step-icon">🚗</span>
-            <h3>Pick up and drive</h3>
-            <p>Meet the owner, collect the keys, and go. Rate your experience afterwards to keep the community safe.</p>
+            <h3 data-i18n="r_s4_h">Pick up and drive</h3>
+            <p data-i18n="r_s4_p">Meet the owner, collect the keys, and go. Rate your experience afterwards to keep the community safe.</p>
           </div>
         </div>
       </div>
@@ -907,28 +942,28 @@
       <div class="how-flow fade-up" id="flow-owner">
         <div class="flow-grid">
           <div class="step">
-            <div class="step-num">Step 01</div>
+            <div class="step-num" data-i18n="step">Step 01</div>
             <span class="step-icon">📋</span>
-            <h3>List your car in minutes</h3>
-            <p>Add photos, set your availability, and describe your vehicle. Takes less than 5 minutes to go live.</p>
+            <h3 data-i18n="o_s1_h">List your car in minutes</h3>
+            <p data-i18n="o_s1_p">Add photos, set your availability, and describe your vehicle. Takes less than 5 minutes to go live.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 02</div>
+            <div class="step-num" data-i18n="step2">Step 02</div>
             <span class="step-icon">💰</span>
-            <h3>Set your price & availability</h3>
-            <p>Choose a daily rate and your own schedule. Block dates you need the car — full flexibility, always yours.</p>
+            <h3 data-i18n="o_s2_h">Set your price &amp; availability</h3>
+            <p data-i18n="o_s2_p">Choose a daily rate and your own schedule. Block dates you need the car — full flexibility, always yours.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 03</div>
+            <div class="step-num" data-i18n="step3">Step 03</div>
             <span class="step-icon">✅</span>
-            <h3>Accept bookings</h3>
-            <p>Review renter profiles and verified documents before approving. You're always in control of who drives your car.</p>
+            <h3 data-i18n="o_s3_h">Accept bookings</h3>
+            <p data-i18n="o_s3_p">Review renter profiles and verified documents before approving. You're always in control of who drives your car.</p>
           </div>
           <div class="step">
-            <div class="step-num">Step 04</div>
+            <div class="step-num" data-i18n="step4">Step 04</div>
             <span class="step-icon">💳</span>
-            <h3>Get paid after each trip</h3>
-            <p>Payment is released automatically once the rental ends. No chasing, no awkward conversations about money.</p>
+            <h3 data-i18n="o_s4_h">Get paid after each trip</h3>
+            <p data-i18n="o_s4_p">Payment is released automatically once the rental ends. No chasing, no awkward conversations about money.</p>
           </div>
         </div>
       </div>
@@ -939,56 +974,56 @@
   <section id="benefits">
     <div class="container">
       <div class="fade-up" style="text-align:center; margin-bottom: 0;">
-        <div class="section-tag">Built for both sides</div>
-        <h2>Whether you own or rent —<br/>Dash has you covered</h2>
+        <div class="section-tag" data-i18n="aud_tag">Built for both sides</div>
+        <h2 data-i18n="aud_h2">Whether you own or rent —<br/>Dash has you covered</h2>
       </div>
       <div class="audience fade-up">
         <!-- OWNERS -->
         <div class="audience-card">
-          <div class="card-tag">🔑 For Car Owners</div>
-          <h3>Turn your car into income</h3>
-          <p>List your car in minutes and start earning. Dash brings verified renters directly to you — no advertising, no hassle.</p>
+          <div class="card-tag" data-i18n="own_tag">🔑 For Car Owners</div>
+          <h3 data-i18n="own_h3">Turn your car into income</h3>
+          <p data-i18n="own_p">List your car in minutes and start earning. Dash brings verified renters directly to you — no advertising, no hassle.</p>
           <div class="perks">
             <div class="perk">
               <div class="perk-icon">✅</div>
-              <div class="perk-text"><strong>Verified renters only.</strong> Every driver on Dash has their ID and license documents confirmed before booking.</div>
+              <div class="perk-text" data-i18n="own_p1"><strong>Verified renters only.</strong> Every driver on Dash has their ID and license documents confirmed before booking.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">📈</div>
-              <div class="perk-text"><strong>Steady demand.</strong> Tap into a growing pool of tourists and expats actively looking to rent in Thailand.</div>
+              <div class="perk-text" data-i18n="own_p2"><strong>Steady demand.</strong> Tap into a growing pool of tourists and expats actively looking to rent in Thailand.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">💰</div>
-              <div class="perk-text"><strong>You set the price.</strong> Negotiate directly with renters and agree on a rate that reflects your car's value.</div>
+              <div class="perk-text" data-i18n="own_p3"><strong>You set the price.</strong> Negotiate directly with renters and agree on a rate that reflects your car's value.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">🔒</div>
-              <div class="perk-text"><strong>Secure payments.</strong> Money is held in escrow and released to you automatically — no chasing invoices.</div>
+              <div class="perk-text" data-i18n="own_p4"><strong>Secure payments.</strong> Money is held in escrow and released to you automatically — no chasing invoices.</div>
             </div>
           </div>
         </div>
 
         <!-- RENTERS -->
         <div class="audience-card">
-          <div class="card-tag">🚙 For Renters</div>
-          <h3>Find the right car, at the right price</h3>
-          <p>Explore a wide range of vehicles from local owners. Negotiate freely and pay in confidence through the platform.</p>
+          <div class="card-tag" data-i18n="ren_tag">🚙 For Renters</div>
+          <h3 data-i18n="ren_h3">Find the right car, at the right price</h3>
+          <p data-i18n="ren_p">Explore a wide range of vehicles from local owners. Negotiate freely and pay in confidence through the platform.</p>
           <div class="perks">
             <div class="perk">
               <div class="perk-icon">🗂️</div>
-              <div class="perk-text"><strong>Wide selection.</strong> From economy hatchbacks to premium SUVs — find exactly what you need for any trip.</div>
+              <div class="perk-text" data-i18n="ren_p1"><strong>Wide selection.</strong> From economy hatchbacks to premium SUVs — find exactly what you need for any trip.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">🤝</div>
-              <div class="perk-text"><strong>Negotiate the price.</strong> Talk directly with owners and agree on a deal that fits your budget — no fixed markups.</div>
+              <div class="perk-text" data-i18n="ren_p2"><strong>Negotiate the price.</strong> Talk directly with owners and agree on a deal that fits your budget — no fixed markups.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">💬</div>
-              <div class="perk-text"><strong>In-app messaging.</strong> All conversations stay on the platform — ask questions, align on details, book in one place.</div>
+              <div class="perk-text" data-i18n="ren_p3"><strong>In-app messaging.</strong> All conversations stay on the platform — ask questions, align on details, book in one place.</div>
             </div>
             <div class="perk">
               <div class="perk-icon">🛡️</div>
-              <div class="perk-text"><strong>Protected payments.</strong> Your money is safe until the rental starts. Cancel and get refunded per our clear policy.</div>
+              <div class="perk-text" data-i18n="ren_p4"><strong>Protected payments.</strong> Your money is safe until the rental starts. Cancel and get refunded per our clear policy.</div>
             </div>
           </div>
         </div>
@@ -1000,45 +1035,45 @@
   <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="fade-up">
-        <div class="section-tag">Platform</div>
-        <h2>Built on three pillars</h2>
-        <p class="section-sub">Everything Dash does comes back to trust, flexibility, and convenience — for both sides of every rental.</p>
+        <div class="section-tag" data-i18n="pil_tag">Platform</div>
+        <h2 data-i18n="pil_h2">Built on three pillars</h2>
+        <p class="section-sub" data-i18n="pil_sub">Everything Dash does comes back to trust, flexibility, and convenience — for both sides of every rental.</p>
       </div>
       <div class="pillars fade-up">
 
         <div class="pillar">
           <span class="pillar-icon">🔒</span>
-          <h3>Trust &amp; Safety</h3>
-          <p>The #1 concern with peer-to-peer rentals is scams and disputes. We've engineered every layer to eliminate them.</p>
+          <h3 data-i18n="p1_h">Trust &amp; Safety</h3>
+          <p data-i18n="p1_p">The #1 concern with peer-to-peer rentals is scams and disputes. We've engineered every layer to eliminate them.</p>
           <ul class="pillar-list">
-            <li>Secure payment holding — no direct transfers</li>
-            <li>ID &amp; driving license verified before booking</li>
-            <li>Ratings &amp; reviews on every transaction</li>
-            <li>Insurance coverage on every trip</li>
+            <li data-i18n="p1_l1">Secure payment holding — no direct transfers</li>
+            <li data-i18n="p1_l2">ID &amp; driving license verified before booking</li>
+            <li data-i18n="p1_l3">Ratings &amp; reviews on every transaction</li>
+            <li data-i18n="p1_l4">Insurance coverage on every trip</li>
           </ul>
         </div>
 
         <div class="pillar">
           <span class="pillar-icon">⚡</span>
-          <h3>Flexibility</h3>
-          <p>Thailand's rental market runs on negotiation — like Facebook Marketplace, but actually safe and structured.</p>
+          <h3 data-i18n="p2_h">Flexibility</h3>
+          <p data-i18n="p2_p">Thailand's rental market runs on negotiation — like Facebook Marketplace, but actually safe and structured.</p>
           <ul class="pillar-list">
-            <li>Price negotiation between owner &amp; renter</li>
-            <li>Flexible deposit system</li>
-            <li>Short-term or long-term rentals</li>
-            <li>Owner controls their own schedule</li>
+            <li data-i18n="p2_l1">Price negotiation between owner &amp; renter</li>
+            <li data-i18n="p2_l2">Flexible deposit system</li>
+            <li data-i18n="p2_l3">Short-term or long-term rentals</li>
+            <li data-i18n="p2_l4">Owner controls their own schedule</li>
           </ul>
         </div>
 
         <div class="pillar">
           <span class="pillar-icon">📱</span>
-          <h3>Convenience</h3>
-          <p>From browsing to driving in minutes — the whole experience is designed for mobile, wherever you are in Thailand.</p>
+          <h3 data-i18n="p3_h">Convenience</h3>
+          <p data-i18n="p3_p">From browsing to driving in minutes — the whole experience is designed for mobile, wherever you are in Thailand.</p>
           <ul class="pillar-list">
-            <li>Mobile-first booking flow</li>
-            <li>In-app chat with car owner</li>
-            <li>Instant booking confirmation</li>
-            <li>Local payment methods — PromptPay &amp; wallets</li>
+            <li data-i18n="p3_l1">Mobile-first booking flow</li>
+            <li data-i18n="p3_l2">In-app chat with car owner</li>
+            <li data-i18n="p3_l3">Instant booking confirmation</li>
+            <li data-i18n="p3_l4">Local payment methods — PromptPay &amp; wallets</li>
           </ul>
         </div>
 
@@ -1050,63 +1085,28 @@
   <section>
     <div class="container">
       <div class="fade-up">
-        <div class="section-tag">Why Dash</div>
-        <h2>How we compare</h2>
-        <p class="section-sub">Dash combines the best of both worlds — the safety of apps with the flexibility of direct deals.</p>
+        <div class="section-tag" data-i18n="cmp_tag">Why Dash</div>
+        <h2 data-i18n="cmp_h2">How we compare</h2>
+        <p class="section-sub" data-i18n="cmp_sub">Dash combines the best of both worlds — the safety of apps with the flexibility of direct deals.</p>
       </div>
       <div class="compare-wrap fade-up">
         <table class="compare-table">
           <thead>
             <tr>
-              <th>Feature</th>
-              <th>Other P2P Apps</th>
-              <th>Facebook Groups</th>
-              <th class="col-dash">Dash <span class="dash-badge">us</span></th>
+              <th data-i18n="cmp_th1">Feature</th>
+              <th data-i18n="cmp_th2">Other P2P Apps</th>
+              <th data-i18n="cmp_th3">Facebook Groups</th>
+              <th class="col-dash">Dash <span class="dash-badge" data-i18n="cmp_us">us</span></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Easy booking</td>
-              <td class="check">✅</td>
-              <td class="cross">❌</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Trust &amp; verification</td>
-              <td class="check">✅</td>
-              <td class="cross">❌</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Flexible negotiation</td>
-              <td class="cross">❌</td>
-              <td class="check">✅</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Variety of cars</td>
-              <td class="cross">❌</td>
-              <td class="check">✅</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Secure payments</td>
-              <td class="check">✅</td>
-              <td class="cross">❌</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Direct communication</td>
-              <td class="cross">❌</td>
-              <td class="check">✅</td>
-              <td class="col-dash check">✅</td>
-            </tr>
-            <tr>
-              <td>Large user base</td>
-              <td class="cross">❌</td>
-              <td class="check">✅</td>
-              <td class="col-dash check">✅</td>
-            </tr>
+            <tr><td data-i18n="cmp_r1">Easy booking</td><td class="check">✅</td><td class="cross">❌</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r2">Trust &amp; verification</td><td class="check">✅</td><td class="cross">❌</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r3">Flexible negotiation</td><td class="cross">❌</td><td class="check">✅</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r4">Variety of cars</td><td class="cross">❌</td><td class="check">✅</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r5">Secure payments</td><td class="check">✅</td><td class="cross">❌</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r6">Direct communication</td><td class="cross">❌</td><td class="check">✅</td><td class="col-dash check">✅</td></tr>
+            <tr><td data-i18n="cmp_r7">Large user base</td><td class="cross">❌</td><td class="check">✅</td><td class="col-dash check">✅</td></tr>
           </tbody>
         </table>
       </div>
@@ -1117,44 +1117,44 @@
   <section class="social-proof">
     <div class="container">
       <div class="fade-up">
-        <div class="section-tag">Social Proof</div>
-        <h2>Built to solve real problems</h2>
-        <p class="section-sub">We talked to hundreds of car owners and renters across Thailand. Here's what they told us.</p>
+        <div class="section-tag" data-i18n="sp_tag">Social Proof</div>
+        <h2 data-i18n="sp_h2">Built to solve real problems</h2>
+        <p class="section-sub" data-i18n="sp_sub">We talked to hundreds of car owners and renters across Thailand. Here's what they told us.</p>
       </div>
       <div class="testimonials fade-up">
 
         <div class="testimonial">
           <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <div class="testimonial-text">I used Facebook before and almost lost my deposit. The owner ghosted me after I transferred the money. This feels so much safer — everything is on the platform.</div>
+          <div class="testimonial-text" data-i18n="t1_text">I used Facebook before and almost lost my deposit. The owner ghosted me after I transferred the money. This feels so much safer — everything is on the platform.</div>
           <div class="testimonial-author">
             <div class="author-avatar">🧑</div>
             <div>
               <div class="author-name">Arjun M.</div>
-              <div class="author-role">Renter · Chiang Mai</div>
+              <div class="author-role" data-i18n="t1_role">Renter · Chiang Mai</div>
             </div>
           </div>
         </div>
 
         <div class="testimonial">
           <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <div class="testimonial-text">I didn't know I could earn from my car this easily. My Honda just sits in the driveway all week. Now I get bookings and I don't have to worry about payments or who's driving it.</div>
+          <div class="testimonial-text" data-i18n="t2_text">I didn't know I could earn from my car this easily. My Honda just sits in the driveway all week. Now I get bookings and I don't have to worry about payments or who's driving it.</div>
           <div class="testimonial-author">
             <div class="author-avatar">👩</div>
             <div>
               <div class="author-name">Nanthida K.</div>
-              <div class="author-role">Owner · Bangkok</div>
+              <div class="author-role" data-i18n="t2_role">Owner · Bangkok</div>
             </div>
           </div>
         </div>
 
         <div class="testimonial">
           <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <div class="testimonial-text">Being able to negotiate the price directly with the owner is a game changer. We agreed on a better rate for a 10-day rental. No agency markup, no hidden fees.</div>
+          <div class="testimonial-text" data-i18n="t3_text">Being able to negotiate the price directly with the owner is a game changer. We agreed on a better rate for a 10-day rental. No agency markup, no hidden fees.</div>
           <div class="testimonial-author">
             <div class="author-avatar">🧔</div>
             <div>
               <div class="author-name">Thomas R.</div>
-              <div class="author-role">Renter · Phuket</div>
+              <div class="author-role" data-i18n="t3_role">Renter · Phuket</div>
             </div>
           </div>
         </div>
@@ -1164,10 +1164,10 @@
       <div class="insight-bar fade-up">
         <div class="insight-icon">📊</div>
         <div class="insight-text">
-          <strong>What renters worry about most</strong>
-          <p>In our pre-launch survey, <strong style="color:var(--text)">scam risk</strong> and <strong style="color:var(--text)">deposit disputes</strong> ranked as the top two concerns with renting cars peer-to-peer in Thailand. Dash was designed to eliminate both.</p>
+          <strong data-i18n="ins_strong">What renters worry about most</strong>
+          <p data-i18n="ins_p">In our pre-launch survey, <strong style="color:var(--text)">scam risk</strong> and <strong style="color:var(--text)">deposit disputes</strong> ranked as the top two concerns with renting cars peer-to-peer in Thailand. Dash was designed to eliminate both.</p>
         </div>
-        <div class="insight-badge">Dash solves this</div>
+        <div class="insight-badge" data-i18n="ins_badge">Dash solves this</div>
       </div>
     </div>
   </section>
@@ -1176,22 +1176,22 @@
   <section class="cta-section" id="waitlist">
     <div class="container">
       <div class="fade-up cta-form-wrap">
-        <div class="section-tag">Early Access</div>
-        <h2>Be the first to drive with Dash</h2>
-        <p class="section-sub">
+        <div class="section-tag" data-i18n="cta_tag">Early Access</div>
+        <h2 data-i18n="cta_h2">Be the first to drive with Dash</h2>
+        <p class="section-sub" data-i18n="cta_sub">
           Join the waitlist and get priority access when we launch in Thailand.
           Owners get featured listings. Renters get exclusive early-bird rates.
         </p>
 
         <form class="email-form" id="cta-form">
-          <input type="email" placeholder="your@email.com" required autocomplete="email" />
-          <button type="submit" class="btn-primary">Join the Waitlist</button>
+          <input type="email" data-i18n-placeholder="cta_placeholder" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit" class="btn-primary" data-i18n="cta_btn">Join the Waitlist</button>
         </form>
         <div class="success-msg" id="cta-success">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          You're on the list! We'll be in touch soon.
+          <span data-i18n="cta_success">You're on the list! We'll be in touch soon.</span>
         </div>
-        <p class="form-note" id="cta-note">No spam. Unsubscribe anytime. 🇹🇭</p>
+        <p class="form-note" id="cta-note" data-i18n="cta_note">No spam. Unsubscribe anytime. 🇹🇭</p>
       </div>
     </div>
   </section>
@@ -1199,11 +1199,214 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Dash<span>.</span></div>
-    <p>© 2026 Dash. Car sharing, reimagined for Thailand.</p>
-    <p style="font-size:0.78rem; color: var(--text-muted);">Coming soon · <a href="mailto:hello@dashdrive.app" style="color:var(--accent); text-decoration:none;">hello@dashdrive.app</a></p>
+    <p data-i18n="footer_copy">© 2026 Dash. Car sharing, reimagined for Thailand.</p>
+    <p style="font-size:0.78rem; color: var(--text-muted);"><span data-i18n="footer_soon">Coming soon</span> · <a href="mailto:hello@dashdrive.app" style="color:var(--accent); text-decoration:none;">hello@dashdrive.app</a></p>
   </footer>
 
   <script>
+    // ── TRANSLATIONS ──
+    const translations = {
+      en: {
+        nav_badge: 'Coming to Thailand',
+        nav_cta: 'Join Waitlist',
+        hero_tag: 'Launching in Thailand — Be first to know',
+        hero_h1: 'Car sharing that<br/>works for <span class="highlight">everyone</span>',
+        hero_sub: 'Dash is a peer-to-peer car rental platform where owners and renters connect directly, negotiate their price, and transact safely — all in one place.',
+        hero_placeholder: 'Enter your email address',
+        hero_cta: 'Get Early Access',
+        hero_success: "You're on the list! We'll be in touch soon.",
+        hero_note: 'No spam. Unsubscribe anytime.',
+        stat1: 'Peer-to-Peer', stat2: 'Verified Users', stat3: 'Set the Price', stat4: 'Thailand First',
+        how_tag: 'How it works',
+        how_h2: 'Simple. Direct. Transparent.',
+        how_sub: 'From listing to driving — the whole experience lives on Dash. No middlemen, no hidden fees.',
+        how_tab_renter: '🚙 I want to rent',
+        how_tab_owner: '🔑 I own a car',
+        step: 'Step 01', step2: 'Step 02', step3: 'Step 03', step4: 'Step 04',
+        optional: 'Optional',
+        r_s1_h: 'Browse cars near you',
+        r_s1_p: 'Search by location, dates, and car type. See real photos and owner ratings before you decide.',
+        r_s2_h: 'Choose or negotiate price <span class="optional-tag" data-i18n="optional">Optional</span>',
+        r_s2_p: "Book at the listed price — or message the owner and make an offer. It's flexible, like it should be.",
+        r_s3_h: 'Pay securely',
+        r_s3_p: 'No direct transfers to strangers. Pay through Dash — your money is protected until the trip starts.',
+        r_s4_h: 'Pick up and drive',
+        r_s4_p: 'Meet the owner, collect the keys, and go. Rate your experience afterwards to keep the community safe.',
+        o_s1_h: 'List your car in minutes',
+        o_s1_p: 'Add photos, set your availability, and describe your vehicle. Takes less than 5 minutes to go live.',
+        o_s2_h: 'Set your price &amp; availability',
+        o_s2_p: 'Choose a daily rate and your own schedule. Block dates you need the car — full flexibility, always yours.',
+        o_s3_h: 'Accept bookings',
+        o_s3_p: "Review renter profiles and verified documents before approving. You're always in control of who drives your car.",
+        o_s4_h: 'Get paid after each trip',
+        o_s4_p: 'Payment is released automatically once the rental ends. No chasing, no awkward conversations about money.',
+        aud_tag: 'Built for both sides',
+        aud_h2: 'Whether you own or rent —<br/>Dash has you covered',
+        own_tag: '🔑 For Car Owners',
+        own_h3: 'Turn your car into income',
+        own_p: 'List your car in minutes and start earning. Dash brings verified renters directly to you — no advertising, no hassle.',
+        own_p1: '<strong>Verified renters only.</strong> Every driver on Dash has their ID and license documents confirmed before booking.',
+        own_p2: '<strong>Steady demand.</strong> Tap into a growing pool of tourists and expats actively looking to rent in Thailand.',
+        own_p3: "<strong>You set the price.</strong> Negotiate directly with renters and agree on a rate that reflects your car's value.",
+        own_p4: '<strong>Secure payments.</strong> Money is held in escrow and released to you automatically — no chasing invoices.',
+        ren_tag: '🚙 For Renters',
+        ren_h3: 'Find the right car, at the right price',
+        ren_p: 'Explore a wide range of vehicles from local owners. Negotiate freely and pay in confidence through the platform.',
+        ren_p1: '<strong>Wide selection.</strong> From economy hatchbacks to premium SUVs — find exactly what you need for any trip.',
+        ren_p2: '<strong>Negotiate the price.</strong> Talk directly with owners and agree on a deal that fits your budget — no fixed markups.',
+        ren_p3: '<strong>In-app messaging.</strong> All conversations stay on the platform — ask questions, align on details, book in one place.',
+        ren_p4: '<strong>Protected payments.</strong> Your money is safe until the rental starts. Cancel and get refunded per our clear policy.',
+        pil_tag: 'Platform',
+        pil_h2: 'Built on three pillars',
+        pil_sub: 'Everything Dash does comes back to trust, flexibility, and convenience — for both sides of every rental.',
+        p1_h: 'Trust &amp; Safety',
+        p1_p: "The #1 concern with peer-to-peer rentals is scams and disputes. We've engineered every layer to eliminate them.",
+        p1_l1: 'Secure payment holding — no direct transfers', p1_l2: 'ID &amp; driving license verified before booking', p1_l3: 'Ratings &amp; reviews on every transaction', p1_l4: 'Insurance coverage on every trip',
+        p2_h: 'Flexibility',
+        p2_p: "Thailand's rental market runs on negotiation — like Facebook Marketplace, but actually safe and structured.",
+        p2_l1: 'Price negotiation between owner &amp; renter', p2_l2: 'Flexible deposit system', p2_l3: 'Short-term or long-term rentals', p2_l4: 'Owner controls their own schedule',
+        p3_h: 'Convenience',
+        p3_p: 'From browsing to driving in minutes — the whole experience is designed for mobile, wherever you are in Thailand.',
+        p3_l1: 'Mobile-first booking flow', p3_l2: 'In-app chat with car owner', p3_l3: 'Instant booking confirmation', p3_l4: 'Local payment methods — PromptPay &amp; wallets',
+        cmp_tag: 'Why Dash', cmp_h2: 'How we compare',
+        cmp_sub: 'Dash combines the best of both worlds — the safety of apps with the flexibility of direct deals.',
+        cmp_th1: 'Feature', cmp_th2: 'Other P2P Apps', cmp_th3: 'Facebook Groups', cmp_us: 'us',
+        cmp_r1: 'Easy booking', cmp_r2: 'Trust &amp; verification', cmp_r3: 'Flexible negotiation',
+        cmp_r4: 'Variety of cars', cmp_r5: 'Secure payments', cmp_r6: 'Direct communication', cmp_r7: 'Large user base',
+        sp_tag: 'Social Proof', sp_h2: 'Built to solve real problems',
+        sp_sub: "We talked to hundreds of car owners and renters across Thailand. Here's what they told us.",
+        t1_text: 'I used Facebook before and almost lost my deposit. The owner ghosted me after I transferred the money. This feels so much safer — everything is on the platform.',
+        t1_role: 'Renter · Chiang Mai',
+        t2_text: "I didn't know I could earn from my car this easily. My Honda just sits in the driveway all week. Now I get bookings and I don't have to worry about payments or who's driving it.",
+        t2_role: 'Owner · Bangkok',
+        t3_text: 'Being able to negotiate the price directly with the owner is a game changer. We agreed on a better rate for a 10-day rental. No agency markup, no hidden fees.',
+        t3_role: 'Renter · Phuket',
+        ins_strong: 'What renters worry about most',
+        ins_p: 'In our pre-launch survey, <strong style="color:var(--text)">scam risk</strong> and <strong style="color:var(--text)">deposit disputes</strong> ranked as the top two concerns with renting cars peer-to-peer in Thailand. Dash was designed to eliminate both.',
+        ins_badge: 'Dash solves this',
+        cta_tag: 'Early Access', cta_h2: 'Be the first to drive with Dash',
+        cta_sub: 'Join the waitlist and get priority access when we launch in Thailand. Owners get featured listings. Renters get exclusive early-bird rates.',
+        cta_placeholder: 'your@email.com',
+        cta_btn: 'Join the Waitlist',
+        cta_success: "You're on the list! We'll be in touch soon.",
+        cta_note: 'No spam. Unsubscribe anytime. 🇹🇭',
+        footer_copy: '© 2026 Dash. Car sharing, reimagined for Thailand.',
+        footer_soon: 'Coming soon',
+      },
+      th: {
+        nav_badge: 'เปิดตัวในไทย',
+        nav_cta: 'จองสิทธิ์ก่อนใคร',
+        hero_tag: 'เปิดตัวในไทย — รับข้อมูลก่อนใคร',
+        hero_h1: 'แชร์รถ ง่ายกว่าเดิม<br/>เพื่อ<span class="highlight">ทุกคน</span>',
+        hero_sub: 'Dash คือแพลตฟอร์มเช่ารถแบบ P2P เชื่อมต่อเจ้าของและผู้เช่าโดยตรง ตกลงราคาได้เอง มั่นใจทุกการทำธุรกรรม ครบจบที่เดียว',
+        hero_placeholder: 'กรอกอีเมลของคุณ',
+        hero_cta: 'รับสิทธิ์เข้าใช้ก่อนเปิดตัว',
+        hero_success: 'คุณได้รับสิทธิ์แล้ว! เราจะติดต่อเร็วๆ นี้',
+        hero_note: 'ไม่มีสแปม ยกเลิกได้ทุกเมื่อ',
+        stat1: 'คนต่อคน', stat2: 'ยืนยันตัวตน 100%', stat3: 'กำหนดราคาเอง', stat4: 'เริ่มที่ไทย',
+        how_tag: 'ขั้นตอนการทำงาน',
+        how_h2: 'ง่าย. ตรงไปตรงมา. โปร่งใส.',
+        how_sub: 'ตั้งแต่การลงทะเบียนจนถึงการขับขี่ — ประสบการณ์ทั้งหมดจบที่ Dash ไม่มีค่านายหน้า ไม่มีค่าใช้จ่ายแอบแฝง',
+        how_tab_renter: '🚙 ฉันอยากเช่ารถ',
+        how_tab_owner: '🔑 ฉันมีรถ',
+        step: 'ขั้นตอนที่ 01', step2: 'ขั้นตอนที่ 02', step3: 'ขั้นตอนที่ 03', step4: 'ขั้นตอนที่ 04',
+        optional: 'ไม่บังคับ',
+        r_s1_h: 'ค้นหารถที่อยู่ใกล้คุณ',
+        r_s1_p: 'ค้นหาตามสถานที่ วันที่ และประเภทรถ ดูรูปถ่ายจริงและรีวิวเจ้าของก่อนที่คุณจะตัดสินใจ',
+        r_s2_h: 'เลือกหรือต่อรองราคา <span class="optional-tag" data-i18n="optional">ไม่บังคับ</span>',
+        r_s2_p: 'จองในราคาที่ลงไว้ หรือจะส่งข้อความหาเจ้าของแล้วเสนอราคาก็ได้ ยืดหยุ่น เหมือนที่ควรจะเป็น',
+        r_s3_h: 'ชำระเงินอย่างปลอดภัย',
+        r_s3_p: 'ไม่ต้องโอนเงินตรงให้คนแปลกหน้า ชำระผ่าน Dash — เงินของคุณจะถูกดูแลจนกว่าการเดินทางจะเริ่มต้น',
+        r_s4_h: 'รับรถและออกเดินทาง',
+        r_s4_p: 'พบเจ้าของ รับกุญแจ แล้วไปได้เลย หลังจบการเดินทางให้คะแนนเพื่อช่วยให้ชุมชนปลอดภัย',
+        o_s1_h: 'ลงประกาศรถในไม่กี่นาที',
+        o_s1_p: 'เพิ่มรูปภาพ ตั้งวันว่าง และอธิบายรถของคุณ ใช้เวลาไม่ถึง 5 นาที ก็พร้อมรับจอง',
+        o_s2_h: 'ตั้งราคาและวันว่าง',
+        o_s2_p: 'เลือกอัตรารายวันและตารางของคุณเอง บล็อกวันที่ต้องใช้รถ — ยืดหยุ่นเต็มที่ เป็นของคุณเสมอ',
+        o_s3_h: 'รับการจอง',
+        o_s3_p: 'ตรวจสอบโปรไฟล์ผู้เช่าและเอกสารที่ยืนยันแล้วก่อนอนุมัติ คุณควบคุมได้เสมอว่าใครจะขับรถของคุณ',
+        o_s4_h: 'รับเงินหลังแต่ละเที่ยว',
+        o_s4_p: 'การชำระเงินจะถูกปล่อยโดยอัตโนมัติเมื่อการเช่าสิ้นสุด ไม่ต้องตามทวง ไม่มีการสนทนาเรื่องเงินที่น่าอึดอัด',
+        aud_tag: 'ออกแบบสำหรับทั้งสองฝ่าย',
+        aud_h2: 'ไม่ว่าจะเป็นเจ้าของหรือผู้เช่า —<br/>Dash ดูแลคุณครบ',
+        own_tag: '🔑 สำหรับเจ้าของรถ',
+        own_h3: 'เปลี่ยนรถให้เป็นรายได้',
+        own_p: 'ลงประกาศรถในไม่กี่นาทีแล้วเริ่มหารายได้ Dash ส่งผู้เช่าที่ผ่านการยืนยันมาหาคุณโดยตรง — ไม่ต้องโฆษณา ไม่ยุ่งยาก',
+        own_p1: '<strong>ผู้เช่าผ่านการยืนยันเท่านั้น</strong> ทุกคนบน Dash ได้รับการตรวจสอบบัตรประชาชนและใบขับขี่ก่อนจอง',
+        own_p2: '<strong>ความต้องการสม่ำเสมอ</strong> เข้าถึงกลุ่มนักท่องเที่ยวและชาวต่างชาติที่กำลังมองหารถเช่าในไทย',
+        own_p3: '<strong>คุณกำหนดราคาเอง</strong> เจรจาโดยตรงกับผู้เช่าและตกลงในราคาที่สะท้อนมูลค่ารถของคุณ',
+        own_p4: '<strong>การชำระเงินที่ปลอดภัย</strong> เงินถูกดูแลในระบบและโอนให้คุณอัตโนมัติ — ไม่ต้องตามเก็บเงิน',
+        ren_tag: '🚙 สำหรับผู้เช่า',
+        ren_h3: 'เจอรถที่ใช่ ในราคาที่ถูกใจ',
+        ren_p: 'สำรวจรถหลากหลายจากเจ้าของในพื้นที่ ต่อรองได้อิสระ และชำระมั่นใจผ่านแพลตฟอร์ม',
+        ren_p1: '<strong>รถให้เลือกหลากหลาย</strong> จากอีโคคาร์ไปถึง SUV พรีเมียม — หารถที่เหมาะกับทุกการเดินทาง',
+        ren_p2: '<strong>ต่อรองราคาได้</strong> คุยโดยตรงกับเจ้าของและตกลงในราคาที่พอใจทั้งสองฝ่าย — ไม่มีบวกราคาตายตัว',
+        ren_p3: '<strong>แชทในแอป</strong> ทุกการสนทนาอยู่บนแพลตฟอร์ม — ถามคำถาม นัดรายละเอียด จองในที่เดียว',
+        ren_p4: '<strong>การชำระเงินที่คุ้มครอง</strong> เงินของคุณปลอดภัยจนกว่าการเช่าจะเริ่มต้น ยกเลิกและได้รับเงินคืนตามนโยบายที่ชัดเจน',
+        pil_tag: 'แพลตฟอร์ม',
+        pil_h2: 'สร้างบน 3 หลักการ',
+        pil_sub: 'ทุกสิ่งที่ Dash ทำ ย้อนกลับมาที่ความไว้วางใจ ความยืดหยุ่น และความสะดวกสบาย — สำหรับทั้งสองฝ่ายของทุกการเช่า',
+        p1_h: 'ความไว้วางใจและความปลอดภัย',
+        p1_p: 'ความกังวลอันดับ 1 ของการเช่ารถ P2P คือการโกงและข้อพิพาท เราออกแบบทุกชั้นของระบบเพื่อกำจัดปัญหาเหล่านั้น',
+        p1_l1: 'ระบบถือเงินปลอดภัย — ไม่มีการโอนตรง', p1_l2: 'ยืนยันบัตรประชาชนและใบขับขี่ก่อนจอง', p1_l3: 'คะแนนและรีวิวทุกธุรกรรม', p1_l4: 'ประกันภัยทุกเที่ยว',
+        p2_h: 'ความยืดหยุ่น',
+        p2_p: 'ตลาดเช่ารถในไทยดำเนินบนการต่อรอง — เหมือน Facebook Marketplace แต่ปลอดภัยและมีระบบกว่า',
+        p2_l1: 'ต่อรองราคาระหว่างเจ้าของและผู้เช่า', p2_l2: 'ระบบมัดจำที่ยืดหยุ่น', p2_l3: 'เช่าระยะสั้นหรือระยะยาว', p2_l4: 'เจ้าของควบคุมตารางของตัวเอง',
+        p3_h: 'ความสะดวกสบาย',
+        p3_p: 'จากการเรียกดูถึงการขับขี่ภายในไม่กี่นาที — ประสบการณ์ทั้งหมดออกแบบมาสำหรับมือถือ ไม่ว่าจะอยู่ที่ใดในไทย',
+        p3_l1: 'การจองที่ออกแบบสำหรับมือถือ', p3_l2: 'แชทกับเจ้าของรถในแอป', p3_l3: 'ยืนยันการจองทันที', p3_l4: 'วิธีชำระเงินท้องถิ่น — พร้อมเพย์และกระเป๋าเงิน',
+        cmp_tag: 'ทำไมต้อง Dash', cmp_h2: 'เปรียบเทียบกับตัวเลือกอื่น',
+        cmp_sub: 'Dash รวมสิ่งที่ดีที่สุดของทั้งสองโลก — ความปลอดภัยของแอปและความยืดหยุ่นของการตกลงโดยตรง',
+        cmp_th1: 'ฟีเจอร์', cmp_th2: 'แอป P2P อื่น', cmp_th3: 'กลุ่ม Facebook', cmp_us: 'เรา',
+        cmp_r1: 'จองง่าย', cmp_r2: 'ความน่าเชื่อถือและการยืนยัน', cmp_r3: 'ต่อรองราคาได้',
+        cmp_r4: 'รถให้เลือกหลากหลาย', cmp_r5: 'ชำระเงินปลอดภัย', cmp_r6: 'สื่อสารโดยตรง', cmp_r7: 'ฐานผู้ใช้ขนาดใหญ่',
+        sp_tag: 'ความคิดเห็นจากผู้ใช้', sp_h2: 'สร้างมาเพื่อแก้ปัญหาจริง',
+        sp_sub: 'เราพูดคุยกับเจ้าของรถและผู้เช่าหลายร้อยคนทั่วไทย นี่คือสิ่งที่พวกเขาบอกเรา',
+        t1_text: 'ก่อนหน้านี้ใช้ Facebook แล้วเกือบเสียเงินมัดจำ เจ้าของหายตัวไปหลังจากที่โอนเงินไป อันนี้รู้สึกปลอดภัยกว่ามาก — ทุกอย่างอยู่บนแพลตฟอร์ม',
+        t1_role: 'ผู้เช่า · เชียงใหม่',
+        t2_text: 'ไม่รู้ว่าจะหารายได้จากรถได้ง่ายขนาดนี้ Honda ของฉันจอดอยู่ในบ้านทั้งสัปดาห์ ตอนนี้มีการจองเข้ามาและไม่ต้องกังวลเรื่องเงินหรือใครขับรถ',
+        t2_role: 'เจ้าของรถ · กรุงเทพฯ',
+        t3_text: 'การต่อรองราคากับเจ้าของโดยตรงเปลี่ยนเกมได้เลย เราตกลงกันได้ราคาที่ดีกว่าสำหรับการเช่า 10 วัน ไม่มีค่าคอมมิสชัน ไม่มีค่าธรรมเนียมแอบแฝง',
+        t3_role: 'ผู้เช่า · ภูเก็ต',
+        ins_strong: 'สิ่งที่ผู้เช่ากังวลมากที่สุด',
+        ins_p: 'จากการสำรวจก่อนเปิดตัว <strong style="color:var(--text)">ความเสี่ยงโดนโกง</strong> และ <strong style="color:var(--text)">ข้อพิพาทเรื่องมัดจำ</strong> ติดอันดับสองความกังวลสูงสุดในการเช่ารถ P2P ในไทย Dash ถูกออกแบบมาเพื่อกำจัดทั้งสองอย่าง',
+        ins_badge: 'Dash แก้ปัญหานี้',
+        cta_tag: 'สิทธิ์เข้าใช้ก่อนใคร', cta_h2: 'เป็นคนแรกที่ขับรถกับ Dash',
+        cta_sub: 'เข้าร่วมรายชื่อรอและรับสิทธิ์ก่อนใครเมื่อเราเปิดตัวในไทย เจ้าของได้รายชื่อพิเศษ ผู้เช่าได้ราคา Early Bird',
+        cta_placeholder: 'อีเมลของคุณ',
+        cta_btn: 'เข้าร่วมรายชื่อรอ',
+        cta_success: 'คุณได้รับสิทธิ์แล้ว! เราจะติดต่อเร็วๆ นี้',
+        cta_note: 'ไม่มีสแปม ยกเลิกได้ทุกเมื่อ 🇹🇭',
+        footer_copy: '© 2026 Dash. แชร์รถ ออกแบบใหม่สำหรับไทย',
+        footer_soon: 'เร็วๆ นี้',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLang(lang) {
+      const t = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.documentElement.lang = lang;
+      currentLang = lang;
+    }
+
+    // ── LANG BUTTONS ──
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyLang(btn.dataset.lang);
+      });
+    });
+
     // ── SCROLL ANIMATIONS ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
@@ -1226,14 +1429,11 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = form.querySelector('input[type="email"]').value;
-
-        // Store locally (replace with your backend/service)
         const stored = JSON.parse(localStorage.getItem('dash_waitlist') || '[]');
         if (!stored.includes(email)) {
           stored.push(email);
           localStorage.setItem('dash_waitlist', JSON.stringify(stored));
         }
-
         form.style.display = 'none';
         if (note) note.style.display = 'none';
         success.classList.add('visible');
