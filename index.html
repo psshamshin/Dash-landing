@@ -866,6 +866,7 @@
     </p>
 
     <form class="email-form" id="hero-form">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
       <input type="email" data-i18n-placeholder="hero_placeholder" placeholder="Enter your email address" required autocomplete="email" />
       <button type="submit" class="btn-primary" data-i18n="hero_cta">Get Early Access</button>
     </form>
@@ -1184,6 +1185,7 @@
         </p>
 
         <form class="email-form" id="cta-form">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="email" data-i18n-placeholder="cta_placeholder" placeholder="your@email.com" required autocomplete="email" />
           <button type="submit" class="btn-primary" data-i18n="cta_btn">Join the Waitlist</button>
         </form>
@@ -1420,23 +1422,69 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     // ── FORM HANDLER ──
+    // Replace YOUR_WEB3FORMS_KEY with your key from https://web3forms.com
+    const WEB3FORMS_KEY = '45ba1bf3-84ea-47bb-9c82-9b6daaf31d5c';
+
     function handleForm(formId, successId, noteId) {
-      const form = document.getElementById(formId);
+      const form    = document.getElementById(formId);
       const success = document.getElementById(successId);
-      const note = document.getElementById(noteId);
+      const note    = document.getElementById(noteId);
       if (!form) return;
 
-      form.addEventListener('submit', (e) => {
+      const btn      = form.querySelector('button[type="submit"]');
+      const input    = form.querySelector('input[type="email"]');
+      const botcheck = form.querySelector('input[name="botcheck"]');
+
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = form.querySelector('input[type="email"]').value;
-        const stored = JSON.parse(localStorage.getItem('dash_waitlist') || '[]');
-        if (!stored.includes(email)) {
-          stored.push(email);
-          localStorage.setItem('dash_waitlist', JSON.stringify(stored));
+        const email = input.value.trim();
+        if (!email) return;
+
+        // Loading state
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = '...';
+
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_KEY,
+              subject: 'New Dash waitlist signup 🚗',
+              from_name: 'Dash Waitlist',
+              botcheck: botcheck ? botcheck.checked : false,
+              email,
+              message: `New waitlist signup: ${email}\nForm: ${formId}\nTime: ${new Date().toISOString()}`,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (data.success) {
+            // Track locally too (for deduplication)
+            const stored = JSON.parse(localStorage.getItem('dash_waitlist') || '[]');
+            if (!stored.includes(email)) stored.push(email);
+            localStorage.setItem('dash_waitlist', JSON.stringify(stored));
+
+            form.style.display = 'none';
+            if (note) note.style.display = 'none';
+            success.classList.add('visible');
+          } else {
+            throw new Error(data.message || 'Submission failed');
+          }
+        } catch (err) {
+          console.error('Waitlist error:', err);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          input.style.borderColor = '#ef4444';
+          input.placeholder = 'Something went wrong — try again';
+          input.value = '';
+          setTimeout(() => {
+            input.style.borderColor = '';
+            input.placeholder = input.getAttribute('placeholder');
+          }, 3000);
         }
-        form.style.display = 'none';
-        if (note) note.style.display = 'none';
-        success.classList.add('visible');
       });
     }
 
